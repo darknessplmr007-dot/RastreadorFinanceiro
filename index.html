@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreador Financeiro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+<main>
+    <!-- Conteúdo da página -->
+    <header>
+        <h1>Rastreador Financeiro</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Para Você</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Ferramentas</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>O que falta para organizar suas finanças de uma vez?</h2>
+        <p>Aqui você pode gerenciar suas finanças de forma eficiente e alcançar seus objetivos financeiros.</p>
+        <button type="button">Agendar uma demonstração</button>
+    </section>
+
+    <!-- Indicador visual de status financeiro -->
+    <div class="financial-status">
+        <div class="status-indicator" data-status="positive">
+            <div class="status-icon">📈</div>
+            <span class="status-text">Suas finanças estão em alta!</span>
+        </div>
+    </div>
+
+    <!-- Cards flutuantes do dashboard -->
+    <div class="dashboard-cards">
+        <div class="card floating-card" style="animation-delay: 0.1s">
+            <h4>💰 Receitas</h4>
+            <div class="card-value" id="totalIncome">R$ 0,00</div>
+        </div>
+
+        <div class="card floating-card" style="animation-delay: 0.2s">
+            <h4>💸 Despesas</h4>
+            <div class="card-value" id="totalExpenses">R$ 0,00</div>
+        </div>
+
+        <div class="card floating-card" style="animation-delay: 0.3s">
+            <h4>🎯 Meta</h4>
+            <div class="progress-bar">
+                <div class="progress-fill" id="goalProgress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Elemento interativo de dicas financeiras -->
+    <div class="financial-tip">
+        <div class="tip-icon">💡</div>
+        <div class="tip-content">
+            <h4>Dica do Dia</h4>
+            <p id="dailyTip">Guarde pelo menos 20% da sua renda mensal!</p>
+        </div>
+        <button type="button" class="tip-refresh" aria-label="Mostrar outra dica financeira">🔄</button>
+    </div>
+
+    <!-- Seletor de tema -->
+    <div class="theme-selector">
+        <button type="button" class="theme-btn" data-theme="light">☀️ Claro</button>
+        <button type="button" class="theme-btn" data-theme="dark">🌙 Escuro</button>
+        <button type="button" class="theme-btn" data-theme="colorful">🌈 Colorido</button>
+    </div>
+
+    <!-- Streak de dias economizando -->
+    <div class="saving-streak">
+        <div class="streak-counter" aria-live="polite">
+            <div class="flame-icon">🔥</div>
+            <span id="streakDays">7</span>
+            <span class="streak-text" id="streakText">dias economizando!</span>
+        </div>
+
+        <div class="streak-actions" aria-label="Controles do streak">
+            <button type="button" class="streak-btn" data-streak-action="decrease">-1 dia</button>
+            <button type="button" class="streak-btn streak-btn--reset" data-streak-action="reset">Resetar</button>
+            <button type="button" class="streak-btn" data-streak-action="increase">+1 dia</button>
+        </div>
+    </div>
+
+    <div class="balance">
+        <h3>Seu Saldo Atual</h3>
+        <div class="balance-amount">R$ 0,00</div>
+    </div>
+
+    <div class="transactions-form">
+        <h3>Adicionar Transação</h3>
+        <form id="transactionForm">
+            <div class="field-group">
+                <label for="descriptionInput">Descrição</label>
+                <input id="descriptionInput" type="text" placeholder="Ex.: Mercado do mês" required>
+            </div>
+
+            <div class="field-group">
+                <label for="amountInput">Valor</label>
+                <input id="amountInput" type="number" placeholder="0,00" min="0.01" step="0.01" required>
+            </div>
+
+            <div class="field-group">
+                <label for="typeInput">Tipo</label>
+                <select id="typeInput" required>
+                    <option value="">Selecione</option>
+                    <option value="income">Receita</option>
+                    <option value="expense">Despesa</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label for="categoryInput">Categoria</label>
+                <select id="categoryInput" required disabled>
+                    <option value="">Selecione o tipo primeiro</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label for="dateInput">Data</label>
+                <input id="dateInput" type="date" required>
+            </div>
+
+            <div class="field-group field-group--action">
+                <button type="submit">Adicionar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Gráfico visual simples -->
+    <div class="expense-chart">
+        <div class="chart-header">
+            <h3>Distribuição de Gastos</h3>
+            <p>Resumo automático por categoria com base nas suas despesas.</p>
+        </div>
+
+        <div class="chart-container" id="expenseChart" aria-live="polite"></div>
+        <p class="chart-empty" id="chartEmpty">Adicione despesas para ver o gráfico por categoria.</p>
+    </div>
+
+    <div class="celebration-container" id="celebrationContainer">
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+    </div>
+
+    <div class="transactions-section">
+        <h2>Transações</h2>
+        <div class="transactions-list" id="transactionsList" aria-live="polite">
+            <!-- Transações serão adicionadas aqui dinamicamente -->
+        </div>
+    </div>
+</main>
+</body>
+</html>
