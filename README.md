@@ -1,34 +1,39 @@
 # Rastreador Financeiro
 
-Aplicação web simples para acompanhar receitas e despesas, visualizar saldo atual e organizar o controle financeiro de forma prática.
+Aplicação web para acompanhar receitas e despesas, visualizar saldo atual e organizar a vida financeira com uma interface simples, responsiva e interativa.
 
-## Visão geral
+## Acesse online
 
-O projeto foi desenvolvido com HTML, CSS e JavaScript puro, com foco em uma interface visual leve e interativa. Os dados ficam salvos no navegador com `localStorage`, então as transações continuam disponíveis mesmo após recarregar a página.
+Quando o GitHub Pages estiver ativo no repositório, o site ficará disponível em:
 
-## Funcionalidades
+[https://darknessplmr007-dot.github.io/RastreadorFinanceiro/](https://darknessplmr007-dot.github.io/RastreadorFinanceiro/)
 
-- Adição de transações com descrição, valor, tipo, categoria e data
-- Remoção de transações
+## Destaques do projeto
+
+- Cadastro de transações com descrição, valor, tipo, categoria e data
 - Cálculo automático de saldo, receitas e despesas
-- Barra de progresso da meta financeira
-- Gráfico dinâmico de despesas por categoria
-- Dica financeira aleatória
-- Troca de tema entre claro, escuro e colorido
-- Controle manual de streak de dias economizando
+- Gráfico dinâmico de gastos por categoria
 - Persistência local com `localStorage`
+- Temas claro, escuro e colorido
+- Dica financeira aleatória
+- Controle manual do streak de dias economizando
+- Layout responsivo para desktop e mobile
 
 ## Tecnologias usadas
 
 - HTML5
 - CSS3
 - JavaScript
+- GitHub Pages
+- GitHub Actions
 
-## Como executar
+## Como executar localmente
 
-Você pode abrir o arquivo `index.html` diretamente no navegador.
+### Opção 1: abrir direto no navegador
 
-Para uma experiência melhor durante o desenvolvimento:
+Abra o arquivo `index.html` no navegador.
+
+### Opção 2: usar Live Server no VS Code
 
 1. Abra a pasta no VS Code.
 2. Instale a extensão `Live Server`.
@@ -39,6 +44,9 @@ Para uma experiência melhor durante o desenvolvimento:
 
 ```text
 Rastreador Financeiro/
+├── .github/
+│   └── workflows/
+│       └── deploy-pages.yml
 ├── css/
 │   └── style.css
 ├── images/
@@ -47,6 +55,27 @@ Rastreador Financeiro/
 ├── index.html
 └── README.md
 ```
+
+## Deploy com GitHub Pages
+
+O projeto foi preparado para publicação automática no GitHub Pages usando GitHub Actions.
+
+Sempre que houver push no branch `main`, o workflow de deploy será executado para publicar o site.
+
+Se o Pages ainda não abrir imediatamente, confira no repositório:
+
+`Settings > Pages > Build and deployment > Source: GitHub Actions`
+
+## Funcionalidades atuais
+
+- Adicionar transações
+- Remover transações
+- Salvar dados no navegador
+- Atualizar cards financeiros automaticamente
+- Exibir status financeiro com base no saldo
+- Renderizar gráfico de despesas por categoria
+- Trocar tema da interface
+- Controlar o streak manualmente com aumentar, diminuir e resetar
 
 ## Melhorias futuras
 
